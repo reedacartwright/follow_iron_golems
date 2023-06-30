@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Calculate stats for measuring iron farms",
+    "name": "FIG: Follow Iron Golems",
+    "uuid":"1a2a49d4-9f23-4876-91dc-84afac44faac",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "modules":
+    [
+      {
+        "description": "FIG Behavior Pack",
+        "type": "data",
+        "uuid": "618398a5-6c74-4e48-b6b1-05958041f177",
+        "version": [1, 0, 0]
+      }
+    ]
+}
