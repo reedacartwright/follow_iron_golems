@@ -16,7 +16,11 @@ scoreboard players set sum_agesq fig_global 0
 scoreboard players set sum_golems fig_global 0
 scoreboard players set timer fig_global 0
 scoreboard players set platform fig_global 0
+
+scoreboard players set calc_sd fig_global 1
+
 scoreboard players set hundred fig_global 100
+scoreboard players set two fig_global 2
 
 scoreboard players reset * fig_results
 

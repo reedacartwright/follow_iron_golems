@@ -6,10 +6,11 @@
 # sum(agesq)' = sum(agesq) + 2*sum(age) + N
 
 # update age, sum_age, and sum_agesq
-scoreboard players operation sum_agesq fig_global += @e[type=iron_golem] fig_age
-scoreboard players add @e[type=iron_golem] fig_age 1
-scoreboard players operation sum_agesq fig_global += @e[type=iron_golem] fig_age
-execute as @e[type=iron_golem] run scoreboard players add sum_age fig_global 1
+
+execute in overworld run scoreboard players operation sum_agesq fig_global += @e[type=iron_golem, x=0, rm=0] fig_age
+execute in overworld run scoreboard players add @e[type=iron_golem, x=0, rm=0] fig_age 1
+execute in overworld run scoreboard players operation sum_agesq fig_global += @e[type=iron_golem, x=0, rm=0] fig_age
+execute in overworld as @e[type=iron_golem, x=0, rm=0] run scoreboard players add sum_age fig_global 1
 
 # update stats for newly spawned golems
 scoreboard players operation sum_golems fig_global += @e[type=iron_golem, scores={fig_age=1}] fig_age
@@ -47,14 +48,6 @@ scoreboard players operation var_age fig_global -= v2 fig_temp
 scoreboard players operation var_age fig_global *= hundred fig_global
 scoreboard players operation var_age fig_global /= n_minus_1 fig_temp
 
-# calculate standard deviation
-scoreboard players operation arg math = var_age fig_global
-scoreboard players operation arg math *= hundred fig_global
-scoreboard players operation arg math /= sum_golems fig_global
-function math/sqrt
-scoreboard players operation ci_mean_age fig_global = ret math
-scoreboard players operation ci_mean_age fig_global += ci_mean_age fig_global
-
 # update results
 scoreboard players operation SumAge fig_results = sum_age fig_global
 scoreboard players operation SumAgeSq fig_results = sum_agesq fig_global
@@ -64,7 +57,8 @@ scoreboard players operation Time fig_results = timer fig_global
 scoreboard players operation NumSpots fig_results = platform fig_global
 scoreboard players operation AvgAge_x100 fig_results = avg_age fig_global
 scoreboard players operation VarAge_x100 fig_results = var_age fig_global
-scoreboard players operation AvgAgeHi_x100 fig_results = avg_age fig_global
-scoreboard players operation AvgAgeHi_x100 fig_results += ci_mean_age fig_global
-scoreboard players operation AvgAgeLo_x100 fig_results = avg_age fig_global
-scoreboard players operation AvgAgeLo_x100 fig_results -= ci_mean_age fig_global
+
+# calculate standard deviation
+execute if score calc_sd fig_global matches 1 run function fig/zzz/calc_sd
+execute if score calc_sd fig_global matches 0 run scoreboard players reset AvgAgeHi_x100
+execute if score calc_sd fig_global matches 0 run scoreboard players reset AvgAgeLo_x100

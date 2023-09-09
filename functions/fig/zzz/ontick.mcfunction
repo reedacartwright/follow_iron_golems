@@ -13,4 +13,4 @@ execute if score fig_state fig_global matches 3 unless entity @e[type=iron_golem
 execute if score fig_state fig_global matches 1 unless entity @e[type=iron_golem] run scoreboard players set fig_state fig_global 2
 
 # run tick operations if fig is in one of the ON states
-execute unless score fig_state fig_global matches 0..1 run function fig/_handle_ontick
+execute unless score fig_state fig_global matches 0..1 run function fig/zzz/handle_ontick
