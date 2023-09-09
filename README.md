@@ -105,8 +105,13 @@ As I explained in [Iron Farm Mechanics in Minecraft Bedrock — Part 2: Advanced
 Mechanics and Rates](https://youtu.be/c_tdRhUmt7w), iron farms can be analyzed
 as a [birth-death process](https://en.wikipedia.org/wiki/Birth%E2%80%93death_process).
 We can use the mechanics of iron farms and the solutions for birth-death
-processes to calculate the rate of and iron farm very accurately. The following
-is an example of the calculation using R.
+processes to calculate the rate of an iron farm very accurately.
+
+You can use [this google sheet](https://docs.google.com/spreadsheets/d/1zmiGbM693c8nROf70GSGrlyeh_ZffTxdhCXASQvpnyo/edit?usp=sharing)
+to calculate how much iron your iron farm generates per hour based on FIG statistics.
+Download or make a copy of the sheet if you want to use it to calculate rates.
+
+Alternatively, you can use this R function to calculate the rate.
 
 ```r
 # Source: https://en.wikipedia.org/wiki/Birth%E2%80%93death_process#Stationary_solution
