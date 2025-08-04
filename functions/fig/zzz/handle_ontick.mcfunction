@@ -14,8 +14,8 @@ execute in overworld as @e[type=iron_golem, x=0, rm=0] run scoreboard players ad
 
 # update stats for newly spawned golems
 scoreboard players operation sum_golems fig_global += @e[type=iron_golem, scores={fig_age=1}] fig_age
-execute at @e[type=iron_golem, scores={fig_age=1}] unless block ~0.5 ~-1 ~0.5 emerald_block run scoreboard players add platform fig_global 1
-execute at @e[type=iron_golem, scores={fig_age=1}] run setblock ~0.5 ~-1 ~0.5 emerald_block
+execute at @e[type=iron_golem, scores={fig_age=1}] unless block ~0.0 ~-1 ~0.0 emerald_block run scoreboard players add platform fig_global 1
+execute at @e[type=iron_golem, scores={fig_age=1}] run setblock ~0.0 ~-1 ~0.0 emerald_block
 
 # update number of ticks
 scoreboard players add timer fig_global 1
